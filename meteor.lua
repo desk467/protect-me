@@ -7,7 +7,7 @@ function Meteor:init(img, x, y)
   self.x    = x
   self.y    = y
   self.lookAt   = math.atan2(160- self.y,  240- self.x)
-  self.velocity = 1.5
+  self.velocity = 60
   self.size = self.img:getWidth()/2
   
 end
@@ -17,8 +17,8 @@ function Meteor:draw()
 end
 
 function Meteor:update(dt)
-  self.x = self.x + self.velocity * math.cos(self.lookAt)
-  self.y = self.y + self.velocity * math.sin(self.lookAt)
+  self.x = self.x + self.velocity * math.cos(self.lookAt) * dt
+  self.y = self.y + self.velocity * math.sin(self.lookAt) * dt
 end
 
 return Meteor

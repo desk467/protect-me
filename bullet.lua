@@ -1,6 +1,6 @@
 local bullet = {}
 
-bullet.velocity  = 3
+bullet.velocity  = 150
 bullet.remove = {}
 bullet.size = 2
 
@@ -25,8 +25,8 @@ end
 function bullet.update(dt)
 
   for i,v in ipairs(bullet) do
-    v.x = v.x + bullet.velocity * math.cos(v.direction)
-    v.y = v.y + bullet.velocity * math.sin(v.direction)
+    v.x = v.x + bullet.velocity * math.cos(v.direction) * dt
+    v.y = v.y + bullet.velocity * math.sin(v.direction) * dt
 
     if v.x > 800 + bullet.size or v.x < -bullet.size
          or v.y > 480 + bullet.size

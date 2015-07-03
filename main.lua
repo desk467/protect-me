@@ -13,15 +13,12 @@ local credits  = require 'credits'
 -- CONSTANTS
 local BG_COLOR = {30,30,30}
 
-Camera = require 'hump.camera'
-
 score = 0
 high  = 0
 
 function love.load()
   windowWidth  = 480
   windowHeight = 320
-  camera = Camera(240,160)
 
   if love.system.getOS() == "Android" then
     local x,y = love.window.getDimensions()
@@ -33,6 +30,7 @@ function love.load()
   end
 
   love.window.setMode(windowWidth*scalex,windowHeight*scaley)
+  love.graphics.setDefaultFilter( 'nearest', 'nearest' )
   
   Gamestate.registerEvents()
   Gamestate.switch(menu)
@@ -50,10 +48,8 @@ function love.draw()
   
   love.graphics.setColor(255,255,255)
   love.graphics.print("FPS: " .. love.timer.getFPS(), 10, 10)
-  love.graphics.print("alpha 0.1", 400, 300)
-  
-  camera:rotateTo(math.pi/2)
-  
+  love.graphics.print("alpha 0.2", 400, 300)
+ 
 end
 
 function love.update(dt)
@@ -61,5 +57,5 @@ function love.update(dt)
 end
 
 function love.keypressed(key)
-  if key == "escape" then os.exit()  end
+  if key == "escape" then love.event.quit()  end
 end
