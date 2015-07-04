@@ -12,11 +12,13 @@ local game   = require 'game'
 local gameOver = require 'gameover'
 local credits  = require 'credits'
 
+saving = require 'saving'
+
 -- CONSTANTS
 local bg = love.graphics.newImage('/res/img/bg.png')
 
 score = 0
-high  = 0
+best  = saving.load()
 
 function love.load()
   windowWidth  = 480
@@ -59,5 +61,8 @@ function love.update(dt)
 end
 
 function love.keypressed(key)
-  if key == "escape" then love.event.quit()  end
+  if key == "escape" then
+    saving.save(best)
+    love.event.quit()
+  end
 end
