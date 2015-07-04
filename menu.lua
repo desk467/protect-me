@@ -8,8 +8,12 @@ function playGame()
   Gamestate.switch(count)
 end
 
+function showCredits()
+  Gamestate.switch(credits)
+end
 
-local playButton = Button('/res/img/play.png', 240, 250, playGame)
+local playButton    = Button('/res/img/play.png', 240, 250, playGame)
+local creditsButton = Button('/res/img/creditsButton.png', 50, 290, showCredits)
 
 function menu:draw()
   love.graphics.setFont(font.large)
@@ -18,11 +22,13 @@ function menu:draw()
   
   love.graphics.setColor(255,255,255)  
   playButton:draw()
+  creditsButton:draw()
   
 end
 
 function menu:mousereleased(x,y,button)
   playButton:mousereleased(x,y,button)
+  creditsButton:mousereleased(x,y,button)
 end
 
 return menu

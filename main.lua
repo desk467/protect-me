@@ -4,6 +4,7 @@ Gamestate = require '/hump/gamestate'
 star = require 'effect'
 
 -- States
+local intro  = require 'intro' 
 local menu   = require 'menu'
 local config = require 'config'
 count  = require 'go'
@@ -34,7 +35,7 @@ function love.load()
   love.graphics.setDefaultFilter( 'nearest', 'nearest' )
   
   Gamestate.registerEvents()
-  Gamestate.switch(menu)
+  Gamestate.switch(intro)
 end
 
 function love.draw()

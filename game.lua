@@ -27,11 +27,7 @@ local function restart()
   msg = ''
   
   player:enableMovement()
-  
-  pos_when_zoom = {}
-  pos_when_zoom.x = 480-(240/scalex)
-  pos_when_zoom.y = 320-(160/scaley)
-  
+ 
 end
 
 function game:init()
@@ -75,7 +71,7 @@ function game:update(dt)
         
     if near_the_planet then
       cam:zoomTo(2)
-      cam:lookAt(pos_when_zoom.x, pos_when_zoom.y)
+      cam:lookAt(480-(240/scalex) , 320-(160/scaley))
       dt = dt / 2.5
       player:disableMovement()
     end
