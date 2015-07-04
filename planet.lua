@@ -20,6 +20,10 @@ function Planet:draw()
   if self.feeling == 'crying' then love.graphics.draw(self.feelings.crying, self.x, self.y) end
 end
 
+function Planet:changeFeeling(feeling)
+  self.feeling = feeling
+end
+
 function Planet:update(dt)
 
 end

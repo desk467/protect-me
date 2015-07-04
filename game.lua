@@ -10,8 +10,11 @@ best = 0
 cam  = Camera(240, 160)
 
 local function restart()
-  cam:zoomTo(1)
   dt = 1/60
+  
+  cam:zoomTo(1)
+  cam:lookAt(240*scalex, 160*scaley)
+  
   terra   = Planet(176, 96, 'happy')
   player  = Player(240, 160) 
   sides   = {-33, 480 + 64}
@@ -24,6 +27,10 @@ local function restart()
   msg = ''
   
   player:enableMovement()
+  
+  pos_when_zoom = {}
+  pos_when_zoom.x = 480-(240/scalex)
+  pos_when_zoom.y = 320-(160/scaley)
   
 end
 
@@ -50,36 +57,41 @@ end
 function game:update(dt)
   
   for i,m in ipairs(meteors) do
+    
     for _,b in ipairs(bullet) do
-      local collide_with_bullet = sq(m.x - b.x) + sq(m.y - b.y) < sq( m.size + 2 );
+      local collide_with_bullet = sq(m.x - b.x) + sq(m.y - b.y) < sq( m.size/2 + 2 );
       local meteor_on_screen = (m.x > 0 and m.x < 480 + m.size) and (m.y > 0 and m.y < 320 + m.size)
       if collide_with_bullet and meteor_on_screen then
         score = score + 1
         clear_bullets_table()
-        meteors[i] = Meteor('/res/img/meteoro.png', sides[math.random(2)], math.random(240), 3)
+        meteors[i] = Meteor('/res/img/meteoro.png', sides[math.random(2)], math.random(240))
       end
     end
+    
     local collide_with_planet = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < (terra.size/2 + m.size/2)
     local near_the_planet     = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < (terra.size/2 + m.size/2) + 32
+    
     local not_much_near_the_planet = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < (terra.size/2 + m.size/2) + 64
         
     if near_the_planet then
-      cam:zoomTo(1.5)
+      cam:zoomTo(2)
+      cam:lookAt(pos_when_zoom.x, pos_when_zoom.y)
       dt = dt / 2.5
       player:disableMovement()
     end
     
     if not_much_near_the_planet then
-      terra = Planet(176,96, 'sad')
+      terra:changeFeeling('sad')
     else
-      terra = Planet(176,96, 'happy')
-    end
+      terra:changeFeeling('happy')
+    end 
         
     if collide_with_planet then
       Gamestate.switch(gameOver)
       restart()
-    end
-  end
+    end 
+    
+  end 
   
   for _,m in ipairs(meteors) do m:update(dt) end
   

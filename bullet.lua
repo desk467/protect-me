@@ -28,8 +28,8 @@ function bullet.update(dt)
     v.x = v.x + bullet.velocity * math.cos(v.direction) * dt
     v.y = v.y + bullet.velocity * math.sin(v.direction) * dt
 
-    if v.x > 800 + bullet.size or v.x < -bullet.size
-         or v.y > 480 + bullet.size
+    if v.x > 480 + bullet.size or v.x < -bullet.size
+         or v.y > 320 + bullet.size
          or v.y < -bullet.size then table.insert(bullet.remove, i) end
     
     clear_bullets_table()

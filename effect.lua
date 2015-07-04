@@ -1,7 +1,7 @@
 star = {}
 speeds = {-2, 2}
 
-for i = 1, 100, 1 do
+for i = 1, 50, 1 do
   star[i] = {x = math.random(480), y = math.random(320), opacity = math.random(255), size = math.random(2), speed = speeds[math.random(2)]}
 end
 
@@ -16,8 +16,8 @@ end
 
 function star.boundary()
   for i, v in ipairs(star) do
-    if v.x < -v.size then v.x = 640 + v.size end
-    if v.x > 640 + v.size then v.x = -v.size end
+    if v.x < -v.size then v.x = 320 + v.size end
+    if v.x > 480 + v.size then v.x = -v.size end
   end
 end
 

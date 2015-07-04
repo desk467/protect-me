@@ -12,7 +12,6 @@ local gameOver = require 'gameover'
 local credits  = require 'credits'
 
 -- CONSTANTS
-local BG_COLOR = {30,30,30}
 local bg = love.graphics.newImage('/res/img/bg.png')
 
 score = 0
@@ -40,7 +39,6 @@ end
 
 function love.draw()
   love.graphics.scale(scalex,scaley)
-  love.graphics.setBackgroundColor(BG_COLOR)
   love.graphics.draw(bg,0,0)
   star.draw()
   
