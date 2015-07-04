@@ -12,12 +12,12 @@ function Button:init(img, x, y, onclick)
 end
 
 function Button:draw()
-  love.graphics.draw(self.img, self.x, self.y)
+  love.graphics.draw(self.img, self.x, self.y, 0, 1, 1, self.img:getWidth()/2, self.img:getHeight()/2)
 end
 
 function Button:mousereleased(x, y, button)
-  onButtonX = (x >= self.x*scalex) and (x <= self.x*scalex + self.img:getWidth()*scalex)
-  onButtonY = (y >= self.y*scaley) and (y <= self.y*scaley + self.img:getHeight()*scaley)
+  onButtonX = (x >= self.x - self.img:getWidth()/2*scalex) and (x <= self.x*scalex + self.img:getWidth()/2*scalex)
+  onButtonY = (y >= self.y - self.img:getHeight()/2*scaley) and (y <= self.y*scaley + self.img:getHeight()/2*scaley)
   
   if button == 'l' and onButtonX and onButtonY then
     self.onclick()

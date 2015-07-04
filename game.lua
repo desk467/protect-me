@@ -2,7 +2,6 @@ local Planet = require 'planet'
 local Player = require 'player'
 local Meteor = require 'meteor'
 local Camera = require 'hump.camera'
-local Timer  = require 'hump.timer'
 
 game = {}
 
@@ -10,7 +9,7 @@ local function sq(x) return math.pow(x, 2) end
 best = 0
 cam  = Camera(240, 160)
 
-function restart_level()
+local function restart()
   cam:zoomTo(1)
   dt = 1/60
   terra   = Planet(176, 96, 'happy')
@@ -29,7 +28,7 @@ function restart_level()
 end
 
 function game:init()
-  restart_level()
+  restart()
 end
 
 function game:draw()
@@ -60,18 +59,25 @@ function game:update(dt)
         meteors[i] = Meteor('/res/img/meteoro.png', sides[math.random(2)], math.random(240), 3)
       end
     end
-    local collide_with_planet = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < 96
-    local near_the_planet     = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < 128
-    
+    local collide_with_planet = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < (terra.size/2 + m.size/2)
+    local near_the_planet     = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < (terra.size/2 + m.size/2) + 32
+    local not_much_near_the_planet = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < (terra.size/2 + m.size/2) + 64
+        
     if near_the_planet then
       cam:zoomTo(1.5)
       dt = dt / 2.5
       player:disableMovement()
     end
     
+    if not_much_near_the_planet then
+      terra = Planet(176,96, 'sad')
+    else
+      terra = Planet(176,96, 'happy')
+    end
+        
     if collide_with_planet then
       Gamestate.switch(gameOver)
-      restart_level()
+      restart()
     end
   end
   

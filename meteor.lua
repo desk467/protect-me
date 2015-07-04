@@ -7,8 +7,8 @@ function Meteor:init(img, x, y)
   self.x    = x
   self.y    = y
   self.lookAt   = math.atan2(160- self.y,  240- self.x)
-  self.velocity = 60
-  self.size = self.img:getWidth()/2
+  self.velocity = 65
+  self.size = self.img:getWidth()--/2
   
 end
 

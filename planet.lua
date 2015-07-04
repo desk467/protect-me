@@ -11,6 +11,7 @@ function Planet:init(x, y, feeling)
   self.x = x
   self.y = y
   self.feeling = feeling
+  self.size = self.feelings.happy:getWidth()
 end
 
 function Planet:draw()

@@ -1,15 +1,15 @@
 font   = require 'font'
 button = require 'button'
-Gamestate = require '/hump/gamestate'
+Gamestate = require 'hump.gamestate'
 
 menu = {}
 
 function playGame()
-  Gamestate.switch(game)
+  Gamestate.switch(count)
 end
 
 
-local playButton = Button('/res/img/play.png', 208, 250, playGame)
+local playButton = Button('/res/img/play.png', 240, 250, playGame)
 
 function menu:draw()
   love.graphics.setFont(font.large)

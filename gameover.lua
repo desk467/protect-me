@@ -4,10 +4,10 @@ gameOver = {}
 
 function restartGame()
   score = 0
-  Gamestate.switch(game)
+  Gamestate.switch(count)
 end
 
-local restart = Button('/res/img/play.png', 200, 250, restartGame)
+local restart = Button('/res/img/play.png', 240, 250, restartGame)
 
 function gameOver:draw()
   love.graphics.setFont(font.large)
