@@ -1,7 +1,9 @@
 font   = require 'font'
 button = require 'button'
 Gamestate = require 'hump.gamestate'
-count = require 'go'
+count  = require 'go'
+Planet = require 'planet'
+Moon   = require 'moon'
 
 menu = {}
 
@@ -13,18 +15,26 @@ function showCredits()
   Gamestate.switch(credits)
 end
 
-local playButton    = Button('/res/img/play.png', 240, 250, playGame)
+local playButton    = Button('/res/img/play.png', 240, 290, playGame)
 local creditsButton = Button('/res/img/creditsButton.png', 50, 290, showCredits)
+local terra = Planet(240, 160, 'happy')
+local lua   = Moon(terra)
 
 function menu:draw()
   love.graphics.setFont(font.large)
   love.graphics.setColor(255,255,255,255)
-  love.graphics.print("protect me", 145, 100)
+  love.graphics.print("protect me", 145, 30)
   
   love.graphics.setColor(255,255,255)  
+  terra:draw()
+  lua:draw()
   playButton:draw()
   creditsButton:draw()
   
+end
+
+function menu:update(dt)
+  lua:update(dt)
 end
 
 function menu:mousereleased(x,y,button)
