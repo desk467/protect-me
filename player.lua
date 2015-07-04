@@ -30,22 +30,36 @@ function Player:update(dt)
   
   local px = math.floor(self.x + math.sin(self.direction) * 75)
   local py = math.floor(self.y + math.cos(self.direction)*-1 * 75)
-
-  if (pressing("left") or (touch("l") and love.mouse.getX() < 240*scalex)) and self.move then
+  
+  
+  if pressing("left") and self.move then
     self.direction = self.direction - self.velocity * dt
   end
   
-  if (pressing("right") or (touch("l") and love.mouse.getX() > 240*scalex)) and self.move then
+  if pressing("right") and self.move then
     self.direction = self.direction + self.velocity * dt
   end
-
+    
+  local lookAt = math.floor(90 + math.deg(math.atan2(love.mouse.getY() - self.y,  love.mouse.getX() - self.x)))
+  
+  if touch("l") and not (lookAt == math.floor(math.deg(self.direction))) then -- Precisa melhorar
+    if lookAt < math.deg(self.direction) then
+      self.direction = self.direction - self.velocity * dt
+    else
+      self.direction = self.direction + self.velocity * dt
+    end
+  end
+  
   time = time + dt
   
   if time > 0.15 then
     bullet.spawn(px, py, self.direction)
     time = 0
   end
-
+  
+  if math.floor(math.deg(self.direction)) > 270  then self.direction = math.rad(-90) end
+  if math.floor(math.deg(self.direction)) < -90 then self.direction  = math.rad(270) end
+  
 end
 
 return Player

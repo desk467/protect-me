@@ -60,9 +60,12 @@ function love.update(dt)
   star.update(dt)
 end
 
+function love.quit()
+    saving.save(best)
+end
+
 function love.keypressed(key)
   if key == "escape" then
-    saving.save(best)
     love.event.quit()
   end
 end

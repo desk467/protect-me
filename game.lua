@@ -10,6 +10,8 @@ local function sq(x) return math.pow(x, 2) end
 best = 0
 local cam  = Camera(240, 160)
 
+msg = ''
+
 local function restart()
   dt = 1/60
   
@@ -49,7 +51,6 @@ function game:draw()
       for _,m in ipairs(meteors) do m:draw() end
     end
   )
-  
 end
 
 function game:update(dt)
@@ -75,7 +76,7 @@ function game:update(dt)
     local near_the_planet     = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < (terra.size/2 + m.size/2) + 24
     
     local not_much_near_the_planet = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < (terra.size/2 + m.size/2) + 64
-        
+    
     if near_the_planet then
       cam:zoomTo(2)
       cam:lookAt(480-(240/scalex) , 320-(160/scaley))
@@ -89,7 +90,7 @@ function game:update(dt)
     else
       terra:changeFeeling('happy')
     end 
-        
+    
     if collide_with_planet then
       Gamestate.switch(gameOver)
       restart()
