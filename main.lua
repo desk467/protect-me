@@ -7,7 +7,7 @@ star = require 'effect'
 local intro  = require 'intro' 
 local menu   = require 'menu'
 local config = require 'config'
-count  = require 'go'
+local count  = require 'go'
 local game   = require 'game'
 local gameOver = require 'gameover'
 local credits  = require 'credits'
@@ -50,7 +50,7 @@ function love.draw()
   
   love.graphics.setColor(255,255,255)
   love.graphics.print("FPS: " .. love.timer.getFPS(), 10, 10)
-  love.graphics.print("alpha 0.2", 400, 300)
+  love.graphics.print("alpha 0.3", 400, 300)
  
 end
 

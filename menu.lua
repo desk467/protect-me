@@ -1,6 +1,7 @@
 font   = require 'font'
 button = require 'button'
 Gamestate = require 'hump.gamestate'
+count = require 'go'
 
 menu = {}
 

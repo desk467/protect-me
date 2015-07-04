@@ -15,9 +15,9 @@ function Planet:init(x, y, feeling)
 end
 
 function Planet:draw()
-  if self.feeling == 'happy'  then love.graphics.draw(self.feelings.happy, self.x, self.y)  end
-  if self.feeling == 'sad'    then love.graphics.draw(self.feelings.sad, self.x, self.y)    end
-  if self.feeling == 'crying' then love.graphics.draw(self.feelings.crying, self.x, self.y) end
+  if self.feeling == 'happy'  then love.graphics.draw(self.feelings.happy, self.x, self.y, 0, 1, 1, self.size/2, self.size/2)  end
+  if self.feeling == 'sad'    then love.graphics.draw(self.feelings.sad, self.x, self.y, 0, 1, 1, self.size/2, self.size/2)    end
+  if self.feeling == 'crying' then love.graphics.draw(self.feelings.crying, self.x, self.y, 0, 1, 1, self.size/2, self.size/2) end
 end
 
 function Planet:changeFeeling(feeling)

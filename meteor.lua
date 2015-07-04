@@ -2,18 +2,20 @@ class = require 'hump.class'
 
 Meteor = class {}
 
-function Meteor:init(img, x, y)
+function Meteor:init(img, x, y, life)
   self.img  = love.graphics.newImage(img)
   self.x    = x
   self.y    = y
   self.lookAt   = math.atan2(160- self.y,  240- self.x)
   self.velocity = 65
-  self.size = self.img:getWidth()
+  self.scale = 1
+  self.size = self.img:getWidth()*self.scale
+  self.life = life
   
 end
 
 function Meteor:draw()
-  love.graphics.draw(self.img, self.x, self.y, self.lookAt, 1, 1, 32, 32)
+  love.graphics.draw(self.img, self.x, self.y, self.lookAt, self.scale, self.scale, self.size/2, self.size/2)
 end
 
 function Meteor:update(dt)
