@@ -32,22 +32,12 @@ function Player:update(dt)
   local py = math.floor(self.y + math.cos(self.direction)*-1 * 75)
   
   
-  if pressing("left") and self.move then
+  if (pressing("left") or (touch("l") and love.mouse.getX() < 240)) and self.move then
     self.direction = self.direction - self.velocity * dt
   end
   
-  if pressing("right") and self.move then
+  if (pressing("left") or (touch("l") and love.mouse.getX() > 240)) and self.move then
     self.direction = self.direction + self.velocity * dt
-  end
-    
-  local lookAt = math.floor(90 + math.deg(math.atan2(love.mouse.getY() - self.y,  love.mouse.getX() - self.x)))
-  
-  if touch("l") and not (lookAt == math.floor(math.deg(self.direction))) then -- Precisa melhorar
-    if lookAt < math.deg(self.direction) then
-      self.direction = self.direction - self.velocity * dt
-    else
-      self.direction = self.direction + self.velocity * dt
-    end
   end
   
   time = time + dt
