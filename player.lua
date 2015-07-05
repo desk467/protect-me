@@ -36,7 +36,7 @@ function Player:update(dt)
     self.direction = self.direction - self.velocity * dt
   end
   
-  if (pressing("left") or (touch("l") and love.mouse.getX() > 240)) and self.move then
+  if (pressing("right") or (touch("l") and love.mouse.getX() > 240)) and self.move then
     self.direction = self.direction + self.velocity * dt
   end
   
@@ -47,7 +47,7 @@ function Player:update(dt)
     time = 0
   end
   
-  if math.floor(math.deg(self.direction)) > 270  then self.direction = math.rad(-90) end
+  if math.floor(math.deg(self.direction)) > 270 then self.direction  = math.rad(-90) end
   if math.floor(math.deg(self.direction)) < -90 then self.direction  = math.rad(270) end
   
 end
