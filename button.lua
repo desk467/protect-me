@@ -16,8 +16,8 @@ function Button:draw()
 end
 
 function Button:mousereleased(x, y, button)
-  onButtonX = (x >= self.x - self.img:getWidth()/2*scalex) and (x <= self.x*scalex + self.img:getWidth()/2*scalex)
-  onButtonY = (y >= self.y - self.img:getHeight()/2*scaley) and (y <= self.y*scaley + self.img:getHeight()/2*scaley)
+  onButtonX = (x >= self.x*scalex - self.img:getWidth()/2) and (x <= self.x*scalex + self.img:getWidth()/2)
+  onButtonY = (y >= self.y*scaley - self.img:getHeight()/2) and (y <= self.y*scaley + self.img:getHeight()/2)
   
   if button == 'l' and onButtonX and onButtonY then
     self.onclick()
