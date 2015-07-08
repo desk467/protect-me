@@ -1,9 +1,9 @@
 font   = require 'font'
-button = require 'button'
+button = require 'classes.button'
 Gamestate = require 'hump.gamestate'
-count  = require 'go'
-Planet = require 'planet'
-Moon   = require 'moon'
+count  = require 'states.go'
+Planet = require 'classes.planet'
+Moon   = require 'classes.moon'
 
 menu = {}
 

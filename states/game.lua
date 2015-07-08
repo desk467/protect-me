@@ -1,6 +1,6 @@
-local Planet = require 'planet'
-local Player = require 'player'
-local Meteor = require 'meteor'
+local Planet = require 'classes.planet'
+local Player = require 'classes.player'
+local Meteor = require 'classes.meteor'
 local Camera = require 'hump.camera'
 local bullet
 

@@ -4,13 +4,13 @@ Gamestate = require '/hump/gamestate'
 star = require 'effect'
 
 -- States
-local intro  = require 'intro' 
-local menu   = require 'menu'
-local config = require 'config'
-local count  = require 'go'
-local game   = require 'game'
-local gameOver = require 'gameover'
-local credits  = require 'credits'
+local intro  = require 'states.intro' 
+local menu   = require 'states.menu'
+local config = require 'states.config'
+local count  = require 'states.go'
+local game   = require 'states.game'
+local gameOver = require 'states.gameover'
+local credits  = require 'states.credits'
 
 saving = require 'saving'
 

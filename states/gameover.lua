@@ -1,4 +1,4 @@
-button = require 'button'
+button = require 'classes.button'
 
 gameOver = {}
 
