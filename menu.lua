@@ -35,6 +35,7 @@ end
 
 function menu:update(dt)
   lua:update(dt)
+  terra:update(dt)
 end
 
 function menu:mousereleased(x,y,button)

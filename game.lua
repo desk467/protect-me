@@ -25,8 +25,8 @@ local function restart()
   best    = math.max(score, best)
   
   math.randomseed(os.time())
-  meteors[1] = Meteor('/res/img/meteoro.png', sides[math.random(2)], math.random(240), 3)
-  meteors[2] = Meteor('/res/img/meteoro.png', sides[math.random(2)], math.random(240), 3)
+  meteors[1] = Meteor(sides[math.random(2)], math.random(240), 3)
+  meteors[2] = Meteor(sides[math.random(2)], math.random(240), 3)
   msg = ''
   
   player:enableMovement()
@@ -48,7 +48,7 @@ function game:draw()
       terra:draw()
       bullet.draw()
       player:draw()
-      for _,m in ipairs(meteors) do m:draw() end
+      for i,m in ipairs(meteors) do m:draw() end
     end
   )
 end
@@ -68,7 +68,7 @@ function game:update(dt)
     end
     
     if m.life <= 0 then
-      meteors[i] = Meteor('/res/img/meteoro.png', sides[math.random(2)], math.random(240), 3)
+      meteors[i] = Meteor(sides[math.random(2)], math.random(240), 3)
       score = score + 1
     end
         

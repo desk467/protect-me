@@ -34,7 +34,7 @@ function love.load()
   end
 
   love.window.setMode(windowWidth*scalex,windowHeight*scaley)
-  love.graphics.setDefaultFilter( 'nearest', 'nearest' )
+  --love.graphics.setDefaultFilter( 'nearest', 'nearest' )
   
   Gamestate.registerEvents()
   Gamestate.switch(intro)

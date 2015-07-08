@@ -1,5 +1,6 @@
 class  = require 'hump.class'
 bullet = require 'bullet'
+anim8  = require 'anim8'
 
 Player = class {}
 
@@ -12,14 +13,17 @@ function Player:init(x,y)
   self.x = x
   self.y = y
   self.direction = math.rad(90)
-  self.img = love.graphics.newImage('/res/img/player.png')
+  self.img = love.graphics.newImage('/res/img/player_anim.png')
   self.velocity = 4
   self.move = true
+  
+  self.g = anim8.newGrid(32, 33, self.img:getWidth(), self.img:getHeight())
+  self.player_anim = anim8.newAnimation(self.g('1-4', 1), 0.2)
 end
 
 function Player:draw()
   love.graphics.setColor(255,255,255)
-  love.graphics.draw(self.img, self.x, self.y, self.direction, 0.5, 0.5, 8, 170)
+  self.player_anim:draw(self.img, self.x, self.y, self.direction, 1, 1, 8, 100)
 end
 
 function Player:disableMovement() self.move = false end
@@ -27,6 +31,7 @@ function Player:enableMovement() self.move = true end
 
 function Player:update(dt)
   local windowWidth  = love.graphics.getWidth()
+  self.player_anim:update(dt)
   
   local px = math.floor(self.x + math.sin(self.direction) * 75)
   local py = math.floor(self.y + math.cos(self.direction)*-1 * 75)
