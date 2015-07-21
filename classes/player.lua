@@ -9,9 +9,10 @@ local touch    = love.mouse.isDown
 local scale    = 1
 local time     = 0
 
-function Player:init(x,y)
-  self.x = x
-  self.y = y
+function Player:init(planet, life)
+  self.x = planet.x
+  self.y = planet.y
+  self.life = life or 'always'
   self.direction = math.rad(90)
   self.img = love.graphics.newImage('/res/img/player_anim.png')
   self.velocity = 4

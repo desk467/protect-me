@@ -7,7 +7,7 @@ function Meteor:init(x, y, life)
   self.x    = x
   self.y    = y
   self.lookAt   = math.atan2(160- self.y,  240- self.x)
-  self.velocity = 65
+  self.velocity = 60
   self.scale = 1
   self.life  = life
   self.where = self.x  

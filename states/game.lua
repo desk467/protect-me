@@ -10,8 +10,6 @@ local function sq(x) return math.pow(x, 2) end
 best = 0
 local cam  = Camera(240, 160)
 
-msg = ''
-
 local function restart()
   dt = 1/60
   
@@ -19,7 +17,7 @@ local function restart()
   cam:lookAt(240*scalex, 160*scaley)
   
   terra   = Planet(240, 160, 'happy')
-  player  = Player(240, 160) 
+  player  = Player(terra) 
   sides   = {-33, 480 + 64}
   meteors = {}
   best    = math.max(score, best)
@@ -27,10 +25,11 @@ local function restart()
   math.randomseed(os.time())
   meteors[1] = Meteor(sides[math.random(2)], math.random(240), 3)
   meteors[2] = Meteor(sides[math.random(2)], math.random(240), 3)
-  msg = ''
   
   player:enableMovement()
   bullet = require 'bullet'
+  
+  score_back = love.graphics.newImage('/res/img/score_back.png')
  
 end
 
@@ -42,16 +41,20 @@ function game:draw()
   cam:draw(
     function ()
       love.graphics.setColor(255,255,255)
-      love.graphics.setFont(font.medium)
-      local w = font.medium:getWidth(score)
-      love.graphics.print(score, 240 - w/2, 20)
-  
       terra:draw()
       bullet.draw()
       player:draw()
       for i,m in ipairs(meteors) do m:draw() end
     end
   )
+  
+  love.graphics.draw(score_back, 240, 5, 0, 0.5, 0.5, score_back:getWidth()/2, score_back:getHeight()/2)
+  love.graphics.push()
+  love.graphics.setFont(font.medium)
+  love.graphics.setColor(0,0,0)
+  w = font.medium:getWidth(score)
+  love.graphics.print(score, 240 - w/2, 5)
+  love.graphics.pop()
 end
 
 function game:update(dt)
@@ -84,6 +87,7 @@ function game:update(dt)
       dt = dt / 2.5
       player:disableMovement()
       m.life = 3
+      terra:changeFeeling('sad')
     end
     
     if not_much_near_the_planet then
@@ -100,7 +104,7 @@ function game:update(dt)
   end 
   
   for _,m in ipairs(meteors) do m:update(dt) end
-  
+    
   terra:update(dt)
   bullet.update(dt)
   player:update(dt)
