@@ -24,7 +24,7 @@ function love.load()
   windowWidth  = 480
   windowHeight = 320
 
-  if love.system.getOS() == "Android" or love.system.getOS() == "Windows App" then
+  if love.system.getOS() == "Android" then
     local x,y = love.window.getDimensions()
     scalex = (x/windowWidth)
     scaley = (y/windowHeight)
