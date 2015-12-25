@@ -25,13 +25,13 @@ function menu:draw()
   love.graphics.setColor(255,255,255,255)
   local w = font.large:getWidth("protect me")
   love.graphics.print("protect me", 240 - w/2, 30)
-  
-  love.graphics.setColor(255,255,255)  
+
+  love.graphics.setColor(255,255,255)
   terra:draw()
   lua:draw()
   playButton:draw()
   creditsButton:draw()
-  
+
 end
 
 function menu:update(dt)
@@ -39,7 +39,7 @@ function menu:update(dt)
   terra:update(dt)
 end
 
-function menu:mousereleased(x,y,button)
+function menu:mousereleased(x,y,button, istouch)
   playButton:mousereleased(x,y,button)
   creditsButton:mousereleased(x,y,button)
 end
