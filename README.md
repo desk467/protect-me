@@ -1,4 +1,4 @@
-# protect-me
+# protect me
 a game about planets and cute meteors.
 
 ![Gameplay](https://dl.dropboxusercontent.com/u/74197906/protect-me.gif)
