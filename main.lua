@@ -24,19 +24,22 @@ function love.load()
   windowWidth  = 480
   windowHeight = 320
 
+  scalex = 1
+  scaley = scalex
+--[[
   if love.system.getOS() == "Android" then
     local x,y = love.window.getDimensions()
     scalex = (x/windowWidth)
     scaley = (y/windowHeight)
  
- else
+ else 
     scalex = 1
     scaley = scalex
   end
 
 
   love.window.setMode(windowWidth*scalex,windowHeight*scaley)
-  
+  ]]
   Gamestate.registerEvents()
   Gamestate.switch(intro)
 end
