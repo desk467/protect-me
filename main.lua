@@ -4,7 +4,7 @@ Gamestate = require '/hump/gamestate'
 star = require 'effect'
 
 -- States
-local intro  = require 'states.intro' 
+local intro  = require 'states.intro'
 local menu   = require 'states.menu'
 local config = require 'states.config'
 local count  = require 'states.go'
@@ -31,8 +31,8 @@ function love.load()
     local x,y = love.window.getDimensions()
     scalex = (x/windowWidth)
     scaley = (y/windowHeight)
- 
- else 
+
+ else
     scalex = 1
     scaley = scalex
   end
@@ -49,16 +49,16 @@ function love.draw()
   love.graphics.setColor(255,255,255)
   love.graphics.draw(bg,0,0)
   star.draw()
-  
+
   love.graphics.setFont(font.small)
   love.graphics.setColor(255,100,100)
   love.graphics.rectangle("fill", 390, 290, 90, 30)
   love.graphics.rectangle("fill", 0, 0, 70, 30)
-  
+
   love.graphics.setColor(255,255,255)
   love.graphics.print("FPS: " .. love.timer.getFPS(), 10, 10)
-  love.graphics.print("alpha 0.3", 400, 300)
- 
+  love.graphics.print("alpha 0.4", 400, 300)
+
 end
 
 function love.update(dt)
