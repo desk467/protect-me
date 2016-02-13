@@ -1,7 +1,9 @@
 # protect me
 a game about planets and cute meteors.
 
-![Gameplay](https://dl.dropboxusercontent.com/u/74197906/protect-me.gif)
+![Intro](http://i.giphy.com/12oKWklAs3OCUU.gif)
+![Gameplay](http://i.giphy.com/i50TyzovNtwUE.gif)
+![Gameover](http://i.giphy.com/Xl3PLurGgt2KY.gif)
 
 ## The game
 protect me it is a simple game in which you need to control a spaceship and protect the planet from a collision with meteors. It was design for mobile devices. But, due it was developed using LÖVE, you can run on virtually any platform, just do the packaging of the code with the correct runtime.
