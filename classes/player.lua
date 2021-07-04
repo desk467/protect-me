@@ -1,6 +1,6 @@
-class  = require 'hump.class'
+class  = require 'libs.hump.class'
+anim8  = require 'libs.anim8'
 bullet = require 'bullet'
-anim8  = require 'anim8'
 
 Player = class {}
 

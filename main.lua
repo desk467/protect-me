@@ -1,5 +1,5 @@
 -- Libs
-Gamestate = require '/hump/gamestate'
+Gamestate = require 'libs.hump.gamestate'
 
 star = require 'effect'
 
@@ -46,18 +46,18 @@ end
 
 function love.draw()
   love.graphics.scale(scalex,scaley)
-  love.graphics.setColor(255,255,255)
+  love.graphics.setColor(1,1,1)
   love.graphics.draw(bg,0,0)
   star.draw()
 
   love.graphics.setFont(font.small)
-  love.graphics.setColor(255,100,100)
+  love.graphics.setColor(1,0.4,0.4)
   love.graphics.rectangle("fill", 390, 290, 90, 30)
   love.graphics.rectangle("fill", 0, 0, 70, 30)
 
-  love.graphics.setColor(255,255,255)
+  love.graphics.setColor(1,1,1)
   love.graphics.print("FPS: " .. love.timer.getFPS(), 10, 10)
-  love.graphics.print("alpha 0.4", 400, 300)
+  love.graphics.print("alpha 0.5", 400, 300)
 
 end
 

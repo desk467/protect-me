@@ -1,5 +1,5 @@
-class = require '/hump/class'
-anim8 = require 'anim8'
+class = require 'libs.hump.class'
+anim8 = require 'libs.anim8'
 
 Planet = class {}
 local dir = 0

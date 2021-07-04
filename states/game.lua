@@ -1,7 +1,8 @@
+local Camera = require 'libs.hump.camera'
+
 local Planet = require 'classes.planet'
 local Player = require 'classes.player'
 local Meteor = require 'classes.meteor'
-local Camera = require 'hump.camera'
 local bullet
 
 game = {}

@@ -1,6 +1,6 @@
 font   = require 'font'
 button = require 'classes.button'
-Gamestate = require 'hump.gamestate'
+Gamestate = require 'libs.hump.gamestate'
 count  = require 'states.go'
 Planet = require 'classes.planet'
 Moon   = require 'classes.moon'

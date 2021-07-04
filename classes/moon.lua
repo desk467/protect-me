@@ -1,4 +1,4 @@
-class  = require 'hump.class'
+class  = require 'libs.hump.class'
 
 Moon = class {}
 

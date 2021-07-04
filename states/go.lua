@@ -15,10 +15,10 @@ end
 
 function go:draw()
   love.graphics.setFont(font.really_bigger)
-  love.graphics.setColor(255,200,50)
+  love.graphics.setColor(1,0.8,0.3)
   local w = font.really_bigger:getWidth(cont)
   love.graphics.print('' .. cont, 240 - w/2, 140)
-  love.graphics.setColor(255,255,255)
+  love.graphics.setColor(1,1,1)
 end
 
 function go:update(dt)
