@@ -92,6 +92,12 @@ function game:update(dt)
 
     local not_much_near_the_planet = (math.sqrt((240 - m.x)^2 + (160 - m.y)^2)) < (terra.size/2 + m.size/2) + 64
 
+    if not_much_near_the_planet then
+      terra:changeFeeling('sad')
+    else
+      terra:changeFeeling('happy')
+    end
+
     if near_the_planet then
       cam:zoomTo(2)
       cam:lookAt(480-(240/scalex) , 320-(160/scaley))
@@ -99,12 +105,6 @@ function game:update(dt)
       player:disableMovement()
       m.life = 3
       terra:changeFeeling('sad')
-    end
-
-    if not_much_near_the_planet then
-      terra:changeFeeling('sad')
-    else
-      terra:changeFeeling('happy')
     end
 
     if collide_with_planet then
